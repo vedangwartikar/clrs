@@ -30,18 +30,43 @@ def linear_search(A, v):
 	return None
 
 #2.1-4
-"""
 def add_binary(x, y):
 	length = len(x)
 	carry = 0
 	z = [0]*(length+1)
 	for i in range(length-1,-1,-1):
-		if (x[i] and y[i]) is 1:
-			z[i] = 0
-			carry = 1
-		elif (x[i] is 0) and (y[i] is 0):
-			z[i] = 0
-"""
+		print(carry, x[i], y[i])
+		if carry is 0:
+			if (x[i] == 0 and y[i] == 0):
+				z[i+1] = 0
+				carry = 0
+			elif (x[i] == 1 and y[i] == 1):
+				z[i+1] = 0
+				carry = 1
+			elif (x[i] == 0 and y[i] == 1):
+				z[i+1] = 1
+				carry = 0
+			elif (x[i] == 1 and y[i] == 0):
+				z[i+1] = 1
+				carry = 0
+		elif carry is 1:
+			if (x[i] == 0 and y[i] == 0):
+				z[i+1] = 1
+				carry = 0
+			elif (x[i] == 1 and y[i] == 1):
+				z[i+1] = 1
+				carry = 1
+			elif (x[i] == 0 and y[i] == 1):
+				z[i+1] = 0
+				carry = 1
+			elif (x[i] == 1 and y[i] == 0):
+				z[i+1] = 0
+				carry = 1
+		print(z[i])
+	if carry == 1:
+		z[0] = 1
+	print(z)
+
 A = [31, 41, 59, 26, 41, 58]
 sorted_A = insertion_sort(A)
 print(sorted_A)
@@ -52,7 +77,7 @@ print(reverse_sorted_A)
 
 print(linear_search(A, 31))
 
-x = [0,0,0,1]
-y = [1,0,1,1]
-add_binary(x, y)
+x = [1,1,1]
+y = [1,1,1]
 
+add_binary(x, y)
